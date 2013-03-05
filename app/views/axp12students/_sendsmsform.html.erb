@@ -1,0 +1,41 @@
+<%= form_tag 'sentsms', :id => 'sendsms' do %>
+  <div class="field">
+    <%= label_tag :ssfm, "Message:" %><br />
+    <%= text_area_tag :ssfm, nil, :maxlength => 140, :cols => 28, :rows => 5 %>
+  </div>
+  <div class="field">
+    <%= label_tag :ssfd, "Delay (in minutes, less than 15 will be sent immediately):" %><br />
+    <%= text_field_tag :ssfd, '0', :maxlength => 3 %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Send Message", :class => 'submit' %>
+  </div>
+<% end %>
+
+ <script language="JavaScript">
+  $(document).ready(function(){
+    $("#sendsms").validate({
+  		rules: {
+    		ssfd: {
+      			required: true,
+      			digits: true
+    		},
+			ssfm: {
+				required: true
+			}
+		},
+		messages: {
+			ssfd: {
+				digits: "Minutes must be numbers only"
+			}
+		},
+        errorPlacement: function(error, element) {
+            offset = element.offset();
+ 			error.insertBefore(element);
+            error.css('position', 'absolute');
+            error.css('left', offset.left + element.outerWidth() + 10);
+            error.css('top', offset.top + element.outerHeight()/2 - error.outerHeight()/2);
+        }
+  	})
+});
+</script>

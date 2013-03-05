@@ -1,0 +1,16 @@
+<% title "AXP12 SMS: View Record" %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @axp12student.name %>
+</p>
+
+<p>
+  <b>Mobile:</b>
+  <%= @axp12student.mobile %>
+</p>
+
+
+<%= link_to 'Edit', edit_axp12student_path(@axp12student) %> |
+<%= link_to 'Back', axp12students_path %>

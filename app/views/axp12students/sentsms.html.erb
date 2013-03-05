@@ -1,0 +1,31 @@
+<% title "AXP12 SMS: Debug Page" %>
+
+
+<h2>Send SMS Notification Debug Page</h2>
+<b>Input from Form:</b> <br><%= @inputparams %><br>
+<br>
+<b>Debug Output:</b><br>
+message: <%= @sendsms.message %><br>
+number list: <%= @sendsms.numberlist %><br>
+delay: <%= @sendsms.delay %><br>
+<br>
+<b>ClickATell:</b><br>
+path: <%= @path %><br>
+data: <%= @data %><br>
+response: <%= @resp.body %><br>
+<br>
+<b>Original List:</b><br>
+<% @axp12students.each do |axp12student| %>
+<table>
+  <tr>
+    <td><%= axp12student.name %></td>
+    <td>+<%= axp12student.mobile %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Send SMS Form', sendsms_axp12students_path %>
+
+

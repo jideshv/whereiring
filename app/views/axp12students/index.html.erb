@@ -1,0 +1,33 @@
+<% title "AXP12 SMS" %>
+<p id="notice"><%= notice %></p>
+<%  cache(:action => "index", :action_suffix => "all_students") do %>
+<h2>AXP12 SMS Notification List</h2>
+<%= link_to 'Send SMS Notification', sendsms_axp12students_path %>
+<br>
+<br>
+<%= link_to 'Add a new notification number', new_axp12student_path %>
+<br>
+<br>
+<table style="width: 310px">
+  <tr>
+    <th>Name</th>
+    <th>Mobile</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @axp12students.each do |axp12student| %>
+  <tr>
+    <td><%= axp12student.name %></td>
+    <td>+<%= axp12student.mobile %></td>
+    <!--<td><%= link_to 'Show', axp12student %></td>-->
+    <td style="width: 20%"><%= link_to 'Edit', edit_axp12student_path(axp12student) %></td>
+    <td style="width: 20%"><%= link_to 'Remove', axp12student, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end end %>
+</table>
+<br>
+<div class='cachestats'>
+	Cache hits: <%= @stats['get_hits'] %>, Cache misses: <%= @stats['get_misses'] %>, Cache flushes: <%= @stats['cmd_flush'] %>
+</div>

@@ -1,0 +1,55 @@
+
+<%= form_for(@axp12student) do |f| %>
+  <% if @axp12student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@axp12student.errors.count, "error") %> prohibited this axp12student from being saved:</h2>
+
+      <ul>
+      <% @axp12student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile %>: Remember the country code!<br />
+    + <%= f.text_field :mobile %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+ <script language="JavaScript">
+
+  $(document).ready(function(){
+    $(".new_axp12student,.edit_axp12student").validate({
+  		rules: {
+    		"axp12student[mobile]": {
+      			required: true,
+      			digits: true
+    		},
+			"axp12student[name]": {
+				required: true
+			}
+		},
+		messages: {
+			"axp12student[mobile]": {
+				digits: "Mobile number must be digits only"
+			}
+		},
+        errorPlacement: function(error, element) {
+            offset = element.offset();
+ 			error.insertBefore(element);
+            error.css('position', 'absolute');
+            error.css('left', offset.left + element.outerWidth() + 10);
+            error.css('top', offset.top + element.outerHeight()/2 - error.outerHeight()/2);
+        }
+  	})
+});
+</script>
